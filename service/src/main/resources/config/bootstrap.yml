@@ -1,0 +1,10 @@
+spring:
+    application:
+        name: NBOCollectorService
+    cloud:
+        config:
+            uri: \${configserver.uri:http://localhost:8888}
+
+logging:
+    file: \${logfile:\${serviceInstallationPath}/logs/NBOCollectorService.log}
+

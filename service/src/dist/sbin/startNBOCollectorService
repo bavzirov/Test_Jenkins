@@ -1,0 +1,13 @@
+#!/usr/intel/bin/node
+'use strict';
+
+var management = require('service-management').management;
+var appName = 'NBOCollectorService';
+
+management.startService(appName, __dirname, process.argv)
+    .then(function success() {
+        process.exit(0);
+    })
+    .catch(function handleError() {
+        process.exit(1);
+    });

@@ -1,0 +1,12 @@
+{
+    "java" : "1.8.0.65",
+    "XX"   : {
+        "MaxHeapSize" : "500m"
+    },
+    "D"    : {
+
+    },
+    "X"    : {
+    },
+    "LogAgent": true
+}

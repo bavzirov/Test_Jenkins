@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+    <include resource="com/intel/swiss/micro/framework/logging/logback-base.xml" />
+</configuration>

@@ -1,0 +1,9 @@
+{
+    "iteration" : 1,
+    "fullId" : "iil1.12334",
+    "cmdName" : "cmdName",
+    "cmdLine" : "cmdLine",
+    "pool" : "iil1",
+    "startTimeInMilli" : 1,
+    "status" : "RUN"
+}

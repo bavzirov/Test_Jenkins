@@ -1,0 +1,7 @@
+{
+  "generator-nb-hipster": {
+    "baseName": "NBOCollectorService",
+    "packageName": "com.intel.swiss.microservices.nbocollectorservice",
+    "packageFolder": "com/intel/swiss/microservices/nbocollectorservice"
+  }
+}

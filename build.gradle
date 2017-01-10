@@ -1,0 +1,73 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        maven {url 'http://repo.spring.io/snapshot'}
+        maven {url 'http://repo.spring.io/plugins-release'}
+        maven {url 'http://repo.spring.io/milestone'}
+        maven {url "https://plugins.gradle.org/m2/"}
+        maven {url 'https://ubit-artifactory-il.intel.com/artifactory/swce-releases-local'}
+        maven {url 'https://ubit-artifactory-il.intel.com/artifactory/swce-snapshots-local'}
+    }
+    dependencies {
+        classpath "com.intel.swiss.gradle:hipster-plugin:${hipster_plugin_version}"
+        classpath "org.springframework.cloud:spring-cloud-contract-gradle-plugin:${contract_plugin_version}"
+    }
+}
+
+apply plugin: 'com.intel.swiss.gradle.hipster'
+
+hipster {
+    sonarUrl = "http://swce-sonar.intel.com:9123/sonar"
+    jenkinsUrl = "http://nb-jenkins.intel.com:8080/job"
+}
+
+allprojects {
+    group = 'com.intel.swiss.microservices.nbocollectorservice'
+}
+
+subprojects {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    ext {
+        SPRING_FRAMEWORK_VERSION = '4.3.5.RELEASE'
+        SPRING_CLOUD_RELEASE = 'Camden.SR3'
+        SWISS_SPRING_VERSION = 'latest.integration'
+        SPRINGFOX_VERSION = '2.6.1'
+        JACKSON_VERSION = '2.8.5'
+        VALIDATION_API_VERSION = '1.1.0.Final'
+    }
+    repositories {
+        maven { url 'http://dl.bintray.com/readytalk/maven' }
+        maven { url 'http://repo.spring.io/milestone' }
+        maven { url 'http://repo.spring.io/snapshot' }
+        maven { url 'https://repository.jboss.org/nexus/content/repositories/releases' }
+        maven { url 'http://repo.maven.apache.org/maven2' }
+        maven { url 'http://swiss-maven-repository.intel.com:8081/nexus/content/repositories/releases/' }
+        maven { url 'http://swiss-maven-repository.intel.com:8081/nexus/content/repositories/snapshots/' }
+        maven { url 'http://swiss-maven-repository.intel.com:8081/nexus/content/repositories/thirdparty/' }
+        maven { url 'https://ubit-artifactory-il.intel.com/artifactory/swce-snapshots-local' }
+        maven { url 'https://ubit-artifactory-il.intel.com/artifactory/swce-releases-local' }
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${SPRING_CLOUD_RELEASE}"
+            mavenBom "org.springframework.boot:spring-boot-starter-parent:${spring_boot_version}"
+        }
+    }
+
+    dependencies {
+        /* Test */
+        testCompile group: 'com.intel.swiss.microservices.framework', name: 'swiss-spring-test', version: SWISS_SPRING_VERSION
+    }
+
+    clean {
+        delete "target"
+    }
+
+    task wrapper(type: Wrapper) {
+        gradleVersion = '2.14'
+    }
+}

@@ -1,0 +1,6 @@
+spring:
+    application:
+        name: NBOCollectorService
+    cloud:
+        config:
+            enabled: false

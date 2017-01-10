@@ -1,0 +1,26 @@
+description = 'SWCE service - NBOCollectorService'
+ext {
+    mapstruct_processor_version = '1.1.0.Final'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-contract-dependencies:${contract_plugin_version}"
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'spring-cloud-contract'
+
+dependencies {
+    compile project(':api')
+    compile 'org.springframework.cloud:spring-cloud-starter-hystrix-dashboard'
+    compile(group: 'com.intel.swiss.microservices.nbodataservice', name: 'NBODataService-api', version: '0.0.1-SNAPSHOT')
+    compile group: 'com.intel.swiss.microservices.framework', name: 'swiss-spring-common', version: SWISS_SPRING_VERSION
+    apt group: 'org.mapstruct', name: 'mapstruct-processor', version: mapstruct_processor_version
+    compile group: 'com.intel.swiss.microservices.framework', name: 'swiss-spring-cloud', version: SWISS_SPRING_VERSION
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
+
+    testCompile 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
+    testCompile "org.springframework.cloud:spring-cloud-starter-contract-stub-runner"
+}

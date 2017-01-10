@@ -1,0 +1,6 @@
+spring:
+    cloud:
+        config:
+            enabled: false
+logging:
+    file: \${logfile:\${java.io.tmpdir}/logs/NBOCollectorService.log}

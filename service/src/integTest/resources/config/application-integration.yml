@@ -1,0 +1,45 @@
+# ===================================================================
+# Spring Boot configuration.
+#
+# This configuration is used for unit/integration tests.
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+stubrunner:
+    idsToServiceIds:
+        NBODataService-stubs: NBODataService
+    camel:
+        enabled: false
+    cloud:
+        stubbed:
+            discovery:
+                enabled: true
+        ribbon:
+            enabled: true
+
+spring:
+    cloud:
+        consul:
+            enabled: false
+            discovery:
+                enabled: false
+    zipkin:
+        enabled: false
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000
+
+swiss:
+    cloud:
+        ribbon:
+            ping:
+                pingPath: /ping

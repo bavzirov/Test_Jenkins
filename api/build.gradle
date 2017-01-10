@@ -1,0 +1,11 @@
+description = 'NBOCollectorService Service API'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    compile "javax.validation:validation-api:${VALIDATION_API_VERSION}"
+    compile "org.springframework:spring-web:${SPRING_FRAMEWORK_VERSION}"
+    compile "io.springfox:springfox-swagger2:${SPRINGFOX_VERSION}"
+    compile "com.fasterxml.jackson.core:jackson-core:${JACKSON_VERSION}"
+}
